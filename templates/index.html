@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="body-content">
+  <div class="success">
+    {% for msg in messages %}
+    <h3 style="color: #0F9D58">{{msg}}</h3>
+    {% endfor %}
+  </div>
+  <div class="side-heading">Management Team</div>
+  <div class="container">
+    {% for mem in mems %}
+      {% if mem.management == True %}
+        <div class="card">
+          <div class="card-top">
+            <img class="img" src="{{mem.img.url}}" alt="">
+            <div class="detils">
+              <a class="name-link" href="members/{{mem.id}}"><div class="name">{{mem.name}}</div></a>
+              <div class="position">{{mem.domain}}</div>
+            </div>
+            <p class="desc">{{mem.desc}}</p>
+          </div>
+          <hr>
+          <div class="socials">
+            <a href="{{mem.github}}"><img class="social-img" width="128" height="128" src="https://img.icons8.com/glyph-neue/128/github.png" alt="github"/></a>
+            <a href="{{mem.linkedin}}"><img class="social-img" width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/></a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="side-heading" style="margin-top: 100px;">Technical Team</div>
+  <div class="container">
+    {% for mem in mems %}
+      {% if mem.tech == True %}
+        <div class="card">
+          <div class="card-top">
+            <img class="img" src="{{mem.img.url}}" alt="">
+            <div class="detils">
+              <a href="members/{{mem.id}}" class="name-link"><div class="name">{{mem.name}}</div></a>
+              <div class="position">{{mem.domain}}</div>
+            </div>
+            <p class="desc">{{mem.desc}}</p>
+          </div>
+          <hr>
+          <div class="socials">
+            <a href="{{mem.github}}"><img  class="social-img" width="128" height="128" src="https://img.icons8.com/glyph-neue/128/github.png" alt="github"/></a>
+            <a href="{{mem.linkedin}}"><img class="social-img" width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/></a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <div class="lead-login">
+      <p><a href="/login/">Click Here</a> To Login as a Lead</p>
+    </div>
+</div>
+
+{% endblock %}

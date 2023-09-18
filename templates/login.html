@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="body-content">
+  <div class="error">
+    {% for msg in messages %}
+    <h3>{{msg}}</h3>
+    {% endfor %}
+  </div>
+  <div class="side-heading">Login</div>
+  <form action="../login/" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="username"><br>
+    <input type="password" name="password" placeholder="password"><br>
+    <button type="submit">Login</button>
+  </form>
+</div>
+{% endblock %}

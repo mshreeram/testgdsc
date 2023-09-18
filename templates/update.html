@@ -1,0 +1,50 @@
+{% extends 'bases.html' %}
+
+{% block content %}
+<div class="body-content">
+  <div class="error">
+    {% for msg in messages %}
+    <h3>{{msg}}</h3>
+    {% endfor %}
+  </div>
+  <div class="side-heading">Update a Member Details</div>
+  <form action="../update/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="verify-mail">Enter the Email of the member: </div><br>
+    <select name="verifymail" >
+      {% for mem in mems %}
+        <option value="{{mem.email}}">{{mem.name}}: {{mem.email}}</option>
+      {% endfor %}
+    </select><br>
+
+    <hr style="margin: 30px 0;">
+
+    <div class="update-details">Enter the new Details below: </div><br>
+
+
+    <input type="text" name="name" placeholder="New Name" ><br>
+
+    <input type="email" name="email" placeholder="New Email" ><br>
+    
+    <input type="text" name="domain" placeholder="Lead for the Domain" ><br>
+
+    <input type="textarea" name="description" placeholder="Bio: Enter a breif bio" ><br>
+
+    <label for="category">Category: </label>
+    <label for="tech"><input type="radio" name="category" value="tech" >Tech</label>
+    
+    <label for="management"><input type="radio" name="category" value="management">Management</label><br>
+    
+
+    <input type="url" name="github" placeholder="Github Profile (Optional)"><br>
+
+    <input type="url" name="linkedin" placeholder="LinkedIn Profile (Optional)"><br>
+
+
+    <label for="profile_pic">Profile Pic: <span>(Optional)</span></label>
+    <input name="profile_pic" type="file" id="file-input" accept="image/*"><br>
+
+    <button type="submit" >Update</button>
+  </form>
+</div>
+{% endblock %}

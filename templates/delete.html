@@ -1,0 +1,22 @@
+{% extends 'bases.html' %}
+
+{% block content %}
+<div class="body-content">
+  <div class="error">
+    {% for msg in messages %}
+    <h3>{{msg}}</h3>
+    {% endfor %}
+  </div>
+  <div class="side-heading">Delete Member</div>
+  <form action="../delete/" method="post">
+    {% csrf_token %}
+    <p>Enter the Email of the member you want to delete:</p><br>
+    <select name="email" >
+      {% for mem in mems %}
+        <option value="{{mem.email}}">{{mem.name}}: {{mem.email}}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Delete</button>
+  </form>
+</div>
+{% endblock %}

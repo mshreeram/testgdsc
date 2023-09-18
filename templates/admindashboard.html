@@ -1,0 +1,42 @@
+{% extends 'bases.html' %}
+
+{% block content %}
+
+<div class="body-content">
+  <div class="success">
+    {% for msg in messages %}
+    <h3 style="color: #0F9D58">{{msg}}</h3>
+    {% endfor %}
+  </div>
+  <div class="greeting">Hello, {{user_first_name}} !!!</div>
+  <div class="side-heading">Add Member</div>
+  <form action="../addMember/" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Name" required><br>
+
+    <input type="email" name="email" placeholder="Email" required><br>
+    
+    <input type="text" name="domain" placeholder="Lead for the Domain" required><br>
+
+    <input type="textarea" name="description" placeholder="Bio: Enter a breif bio" required><br>
+
+    <label for="category">Category: </label>
+    <label for="tech"><input type="radio" name="category" value="tech" required>Tech</label>
+    
+    <label for="management"><input type="radio" name="category" value="management">Management</label><br>
+    
+
+    <input type="url" name="github" placeholder="Github Profile (Optional)"><br>
+
+    <input type="url" name="linkedin" placeholder="LinkedIn Profile (Optional)"><br>
+
+
+    <label for="profile_pic">Profile Pic: <span>(Optional)</span></label>
+    <input name="profile_pic" type="file" id="file-input" accept="image/*"><br>
+
+    <button type="submit" >Add Member</button>
+  </form>
+</div>
+
+{% endblock %}

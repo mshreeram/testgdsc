@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="body-content">
+  <div class="content">
+    <img class="long-img" src="{{mem.img.url}}" alt="">
+    <div class="long-heading">{{mem.name}}</div>
+    <div class="long-position">{{mem.domain}}</div>
+    <h2 class="about">About {{mem.name}}: </h2>
+    <div class="long-description">{{mem.desc}}</div>
+    <div class="long-email">Email: {{mem.email}}</div>
+    <div class="long-social">
+      <a href="{{mem.github}}"><img class="social-img" width="128" height="128" src="https://img.icons8.com/glyph-neue/128/github.png" alt="github"/></a>
+      <a href="{{mem.linkedin}}"><img class="social-img" width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/></a>
+    </div>
+  </div>
+</div>
+{% endblock %}
